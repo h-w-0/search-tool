@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW的私站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/MainCode/style.css">
+</head>
+<body id="html-body">
+    
+    <page-start>
+        <div id="page-title">
+            自用搜索工具
+        </div>
+        <div id="page-content">
+这是一个基于Searxng的搜索工具，方便我找失传媒体之类的玩意。<br>
+别人怎么用的责任不追究于我。
+
+    <div style="text-align:center">
+        <br>
+        <img class="search-logo" src="https://search.ipv6s.net/static/themes/simple/img/searxng.png">
+        
+        <form id="searchForm">
+            <input class="gstxt" type="text" name="q" placeholder="输入关键词" required>
+            
+            <div class="engine-checkbox">
+                <!-- 国际搜索引擎 -->
+                <div class="engine-group">
+
+                    <label><input type="checkbox" name="engine" value="!go"> 谷歌</label><br>
+                    <label><input type="checkbox" name="engine" value="!bi"> 必应</label><br>
+<label><input type="checkbox" name="engine" value="!yh"> 雅虎</label><br>
+                    <label><input type="checkbox" name="engine" value="!br"> Brave</label><br>
+                    <label><input type="checkbox" name="engine" value="!ddg"> DuckDuckGo</label><br>
+                </div>
+                
+                <!-- 中文搜索引擎 -->
+                <div class="engine-group">
+                    <label><input type="checkbox" name="engine" value="!bd"> 百度</label><br>
+                    <label><input type="checkbox" name="engine" value="!360so"> 360搜索</label><br>
+                    <label><input type="checkbox" name="engine" value="!sogou"> 搜狗</label><br>
+                    <label><input type="checkbox" name="engine" value="!qk"> 夸克</label>
+                </div>
+                
+                <!-- 其他引擎 -->
+                <div class="engine-group">
+                    <label><input type="checkbox" name="engine" value="!wa"> WolframAlpha</label><br>
+                    <label><input type="checkbox" name="engine" value="!sp"> Startpage</label><br>
+                    <label><input type="checkbox" name="engine" value="!qw"> Qwant</label>
+                </div>
+                
+                <!-- 地区性引擎 -->
+                <div class="engine-group">
+                    <label><input type="checkbox" name="engine" value="!szn"> Seznam (CZ)</label><br>
+                    <label><input type="checkbox" name="engine" value="!goo"> Goo (JA)</label><br>
+                    <label><input type="checkbox" name="engine" value="!nvr"> Naver (KO)</label><br>
+                    <label><input type="checkbox" name="engine" value="!ts"> Tagesschau (DE)</label>
+                </div>
+            </div>
+            
+            <button type="submit" class="gbutton">开始搜索</button>
+        </form>
+    </div>
+
+    <script>
+    document.getElementById('searchForm').onsubmit = function(e) {
+        e.preventDefault();
+        
+        const baseUrl = 'https://search.ipv6s.net/search';
+        const query = encodeURIComponent(this.q.value.trim() + ' ');
+        const engines = Array.from(this.engine)
+                          .filter(cb => cb.checked)
+                          .map(cb => cb.value)
+                          .join(' ');
+        
+        if (!query) return alert('请输入搜索内容');
+        if (!engines) return alert('请至少选择一个搜索引擎');
+
+        const finalUrl = `${baseUrl}?q=${query}${engines}&categories=general&language=all`;
+        window.open(finalUrl);
+    };
+    </script>
+
+        </div>
+    </page-start>
+    
+    
+    <script src="/MainCode/script.js"></script>
+      <style>
+.gstxt {
+        border-radius: 23px;
+        border: 1px solid #dfe1e5;
+        width: 50%;
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .gbutton {
+        border-radius: 23px;
+        border: 1px solid #dfe1e5;
+        padding: 10px 20px;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+
+    .search-logo {
+        height: 40px;
+        margin-bottom: 15px;
+    }
+
+.engine-checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 15px auto;
+    max-width: 100%;
+}
+
+.engine-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.engine-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+}
+
+.engine-group input[type="checkbox"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+}
+    </style>
+</body>
+</html>
