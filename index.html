@@ -210,22 +210,27 @@
     </div>
 
     <script>
-    document.getElementById('searchForm').onsubmit = function(e) {
-        e.preventDefault();
-        
-        const baseUrl = 'https://search.ipv6s.net/search';
-        const query = encodeURIComponent(this.q.value.trim() + ' ');
-        const engines = Array.from(this.engine)
-                          .filter(cb => cb.checked)
-                          .map(cb => cb.value)
-                          .join(' ');
-        
-        if (!query) return alert('请输入搜索内容');
-        if (!engines) return alert('请至少选择一个搜索引擎');
+document.getElementById('searchForm').onsubmit = function(e) {
+    e.preventDefault();
+    
+    const baseUrl = 'https://search.ipv6s.net/search';
+    const query = encodeURIComponent(this.q.value.trim() + ' ');
+    const engines = Array.from(this.engine)
+                      .filter(cb => cb.checked)
+                      .map(cb => cb.value);
+    
+    if (!query.trim()) return alert('请输入搜索内容');
+    if (!engines.length) return alert('请至少选择一个搜索引擎');
 
-        const finalUrl = `${baseUrl}?q=${query}${engines}&categories=general&language=all`;
-        window.open(finalUrl);
-    };
+    const params = new URLSearchParams();
+    params.append('q', query);
+    engines.forEach(engine => params.append('engine', engine));
+    params.append('categories', 'general');
+    params.append('language', 'all');
+
+    const finalUrl = `${baseUrl}?${params.toString()}`;
+    window.open(finalUrl);
+};
     </script>
 
         </div>
