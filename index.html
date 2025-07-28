@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/MainCode/style.css">
           <style>
+/* 搜索Logo样式 */
 .search-logo {
     max-width: 220px;
     height: auto;
@@ -42,28 +43,42 @@
     color: rgba(var(--black), 0.5);
 }
 
-/* 搜索引擎选择区 */
+/* 搜索引擎选择区 - 调整为每行显示一个类型组 */
 .engine-checkbox {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
+    flex-direction: column;
+    gap: 15px;
     margin: 0 auto 25px;
     max-width: 900px;
     padding: 0 15px;
 }
 
+/* 每个类型组作为一行显示 */
 .engine-group {
     background-color: rgba(var(--gray), 0.7);
     border-radius: 8px;
     padding: 15px 20px;
-    min-width: 180px;
+    width: 100%;
     border: 1px solid rgba(var(--blue), 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+/* 为每个类型组添加标题 */
+.engine-group::before {
+    content: attr(data-group);
+    font-weight: 600;
+    color: rgba(var(--blue-d), 1);
+    min-width: 100px;
 }
 
 .engine-group label {
-    display: block;
-    margin-bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0;
+    margin-right: 15px;
     cursor: pointer;
     color: rgba(var(--black), 0.85);
     transition: color 0.2s ease;
@@ -102,14 +117,15 @@
     box-shadow: 0 2px 4px rgba(var(--blue-d), 0.2);
 }
 
+/* 响应式调整 */
 @media (max-width: 768px) {
-    .engine-checkbox {
-        gap: 15px;
+    .engine-group {
+        padding: 12px 15px;
+        gap: 10px;
     }
     
-    .engine-group {
-        min-width: 140px;
-        padding: 12px 15px;
+    .engine-group::before {
+        min-width: 80px;
     }
     
     .search-logo {
@@ -122,16 +138,20 @@
 }
 
 @media (max-width: 480px) {
-    .engine-checkbox {
+    .engine-group {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
     
-    .engine-group {
-        width: 90%;
-        max-width: 300px;
+    .engine-group::before {
+        margin-bottom: 10px;
+    }
+    
+    .engine-group label {
+        margin-bottom: 8px;
     }
 }
+
     </style>
 </head>
 <body id="html-body">
@@ -149,7 +169,7 @@
         <img class="search-logo" src="https://search.ipv6s.net/static/themes/simple/img/searxng.png">
         
         <form id="searchForm">
-            <input class="gstxt" type="text" name="q" placeholder="输入关键词" required>
+            <input class="gstxt" type="text" name="q" placeholder="输入关键词" required> <button type="submit" class="gbutton">开始搜索</button>
             
             <div class="engine-checkbox">
                 <!-- 国际搜索引擎 -->
@@ -185,8 +205,6 @@
                     <label><input type="checkbox" name="engine" value="!ts"> Tagesschau (DE)</label>
                 </div>
             </div>
-            
-            <button type="submit" class="gbutton">开始搜索</button>
         </form>
     </div>
 
