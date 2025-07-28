@@ -6,6 +6,133 @@
     <title>HW的私站</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/MainCode/style.css">
+          <style>
+.search-logo {
+    max-width: 220px;
+    height: auto;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+}
+
+.search-logo:hover {
+    transform: scale(1.05);
+}
+
+/* 搜索输入框样式 */
+.gstxt {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(var(--blue), 0.6);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgba(var(--white), 0.9);
+    color: rgba(var(--black), 1);
+    transition: all 0.3s ease;
+}
+
+.gstxt:focus {
+    outline: none;
+    border-color: rgba(var(--blue), 1);
+    box-shadow: 0 0 0 3px rgba(var(--blue), 0.2);
+}
+
+.gstxt::placeholder {
+    color: rgba(var(--black), 0.5);
+}
+
+/* 搜索引擎选择区 */
+.engine-checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin: 0 auto 25px;
+    max-width: 900px;
+    padding: 0 15px;
+}
+
+.engine-group {
+    background-color: rgba(var(--gray), 0.7);
+    border-radius: 8px;
+    padding: 15px 20px;
+    min-width: 180px;
+    border: 1px solid rgba(var(--blue), 0.3);
+}
+
+.engine-group label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+    color: rgba(var(--black), 0.85);
+    transition: color 0.2s ease;
+}
+
+.engine-group label:hover {
+    color: rgba(var(--blue-d), 1);
+}
+
+.engine-group input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: rgba(var(--blue), 0.8);
+}
+
+.gbutton {
+    background-color: rgba(var(--blue), 0.9);
+    color: rgba(var(--white), 1);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.gbutton:hover {
+    background-color: rgba(var(--blue-d), 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(var(--blue-d), 0.3);
+}
+
+.gbutton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(var(--blue-d), 0.2);
+}
+
+@media (max-width: 768px) {
+    .engine-checkbox {
+        gap: 15px;
+    }
+    
+    .engine-group {
+        min-width: 140px;
+        padding: 12px 15px;
+    }
+    
+    .search-logo {
+        max-width: 180px;
+    }
+    
+    .gstxt {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .engine-checkbox {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .engine-group {
+        width: 90%;
+        max-width: 300px;
+    }
+}
+    </style>
 </head>
 <body id="html-body">
     
@@ -87,56 +214,5 @@
     
     
     <script src="/MainCode/script.js"></script>
-      <style>
-.gstxt {
-        border-radius: 23px;
-        border: 1px solid #dfe1e5;
-        width: 50%;
-        padding: 10px;
-        margin: 10px 0;
-    }
-
-    .gbutton {
-        border-radius: 23px;
-        border: 1px solid #dfe1e5;
-        padding: 10px 20px;
-        margin: 10px 0;
-        cursor: pointer;
-    }
-
-    .search-logo {
-        height: 40px;
-        margin-bottom: 15px;
-    }
-
-.engine-checkbox {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin: 15px auto;
-    max-width: 100%;
-}
-
-.engine-group {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin: 0 auto;
-}
-
-.engine-group label {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    transition: all 0.2s;
-}
-
-.engine-group input[type="checkbox"] {
-    margin: 0;
-    width: 16px;
-    height: 16px;
-}
-    </style>
 </body>
 </html>
