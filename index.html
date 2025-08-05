@@ -8,233 +8,377 @@
     <link rel="stylesheet" href="/MainCode/style.css">
           <style>
 .search-logo {
-    max-width: 220px;
-    height: auto;
-    margin-bottom: 25px;
-    transition: transform 0.3s ease;
-}
+            max-width: 220px;
+            height: auto;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
 
-.search-logo:hover {
-    transform: scale(1.05);
-}
+        .search-logo:hover {
+            transform: scale(1.05);
+        }
 
-.gstxt {
-    width: 100%;
-    max-width: 600px;
-    padding: 12px 18px;
-    margin-bottom: 20px;
-    border: 2px solid rgba(var(--blue), 0.6);
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: rgba(var(--white), 0.9);
-    color: rgba(var(--black), 1);
-    transition: all 0.3s ease;
-}
+        .gstxt {
+            width: 100%;
+            max-width: 600px;
+            padding: 12px 18px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(var(--blue), 0.6);
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: rgba(var(--white), 0.9);
+            color: rgba(var(--black), 1);
+            transition: all 0.3s ease;
+        }
 
-.gstxt:focus {
-    outline: none;
-    border-color: rgba(var(--blue), 1);
-    box-shadow: 0 0 0 3px rgba(var(--blue), 0.2);
-}
+        .gstxt:focus {
+            outline: none;
+            border-color: rgba(var(--blue), 1);
+            box-shadow: 0 0 0 3px rgba(var(--blue), 0.2);
+        }
 
-.gstxt::placeholder {
-    color: rgba(var(--black), 0.5);
-}
+        .gstxt::placeholder {
+            color: rgba(var(--black), 0.5);
+        }
 
-.engine-checkbox {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 0 auto 25px;
-    max-width: 900px;
-    padding: 0 15px;
-}
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
 
-.engine-group {
-    background-color: rgba(var(--gray), 0.7);
-    border-radius: 8px;
-    padding: 15px 20px;
-    width: 100%;
-    border: 1px solid rgba(var(--blue), 0.3);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 15px;
-}
+        .control-btn {
+            background-color: rgba(var(--blue), 0.8);
+            color: rgba(var(--white), 1);
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
 
-.engine-group::before {
-    content: attr(data-group);
-    font-weight: 600;
-    color: rgba(var(--blue-d), 1);
-    min-width: 100px;
-}
+        .control-btn:hover {
+            background-color: rgba(var(--blue-d), 1);
+        }
 
-.engine-group label {
-    display: inline-flex;
-    align-items: center;
-    margin-bottom: 0;
-    margin-right: 15px;
-    cursor: pointer;
-    color: rgba(var(--black), 0.85);
-    transition: color 0.2s ease;
-}
+        .engine-checkbox {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 0 auto 25px;
+            max-width: 900px;
+            padding: 0 15px;
+        }
 
-.engine-group label:hover {
-    color: rgba(var(--blue-d), 1);
-}
+        .engine-group {
+            background-color: rgba(var(--gray), 0.7);
+            border-radius: 8px;
+            padding: 15px 20px;
+            width: 100%;
+            border: 1px solid rgba(var(--blue), 0.3);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+        }
 
-.engine-group input[type="checkbox"] {
-    margin-right: 8px;
-    accent-color: rgba(var(--blue), 0.8);
-}
+        .group-header {
+            display: flex;
+            align-items: center;
+            min-width: 120px;
+        }
 
-.gbutton {
-    background-color: rgba(var(--blue), 0.9);
-    color: rgba(var(--white), 1);
-    border: none;
-    border-radius: 8px;
-    padding: 12px 30px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
+        .group-title {
+            font-weight: 600;
+            color: rgba(var(--blue-d), 1);
+            margin-right: 10px;
+        }
 
-.gbutton:hover {
-    background-color: rgba(var(--blue-d), 1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(var(--blue-d), 0.3);
-}
+        .select-all-group {
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background-color: rgba(var(--blue), 0.7);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-.gbutton:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(var(--blue-d), 0.2);
-}
+        .engine-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            flex: 1;
+        }
 
-@media (max-width: 768px) {
-    .engine-group {
-        padding: 12px 15px;
-        gap: 10px;
-    }
-    
-    .engine-group::before {
-        min-width: 80px;
-    }
-    
-    .search-logo {
-        max-width: 180px;
-    }
-    
-    .gstxt {
-        max-width: 90%;
-    }
-}
+        .engine-group label {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 0;
+            cursor: pointer;
+            color: rgba(var(--black), 0.85);
+            transition: color 0.2s ease;
+        }
 
-@media (max-width: 480px) {
-    .engine-group {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .engine-group::before {
-        margin-bottom: 10px;
-    }
-    
-    .engine-group label {
-        margin-bottom: 8px;
-    }
-}
+        .engine-group label:hover {
+            color: rgba(var(--blue-d), 1);
+        }
 
-              .gbutton{
-                  position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 1rem;
-              }
+        .engine-group input[type="checkbox"] {
+            margin-right: 8px;
+            accent-color: rgba(var(--blue), 0.8);
+        }
+
+        .gbutton {
+            background-color: rgba(var(--blue), 0.9);
+            color: rgba(var(--white), 1);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .gbutton:hover {
+            background-color: rgba(var(--blue-d), 1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(var(--blue-d), 0.3);
+        }
+
+        .gbutton:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(var(--blue-d), 0.2);
+        }
+
+        .gbutton {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .engine-group {
+                padding: 12px 15px;
+                gap: 10px;
+            }
+            
+            .group-header {
+                min-width: 100px;
+            }
+            
+            .search-logo {
+                max-width: 180px;
+            }
+            
+            .gstxt {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .engine-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .group-header {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            
+            .engine-options {
+                width: 100%;
+            }
+            
+            .engine-group label {
+                margin-bottom: 8px;
+            }
+        }
 
     </style>
 </head>
 <body id="html-body">
     
-    <page-start>
+<page-start>
         <div id="page-title">
             自用搜索工具
         </div>
         <div id="page-content">
-这是一个基于Searxng的搜索工具，方便我找失传媒体之类的玩意。<br>
-别人怎么用的责任不追究于我。
+            这是一个基于Searxng的搜索工具，方便我找失传媒体之类的玩意。<br>
+            别人怎么用的责任不追究于我。
 
-    <div style="text-align:center">
-        <br>
-        <img class="search-logo" src="https://search.ipv6s.net/static/themes/simple/img/searxng.png">
-        
-        <form id="searchForm">
-            <input class="gstxt" type="text" name="q" placeholder="输入关键词" required> <button type="submit" class="gbutton">开始搜索</button>
-            
-            <div class="engine-checkbox">
-                <!-- 国际搜索引擎 -->
-                <div class="engine-group">
-
-                    <label><input type="checkbox" name="engine" value="!go"> 谷歌</label><br>
-                    <label><input type="checkbox" name="engine" value="!bi"> 必应</label><br>
-<label><input type="checkbox" name="engine" value="!yh"> 雅虎</label><br>
-                    <label><input type="checkbox" name="engine" value="!br"> Brave</label><br>
-                    <label><input type="checkbox" name="engine" value="!ddg"> DuckDuckGo</label><br>
-                </div>
+            <div style="text-align:center">
+                <br>
+                <img class="search-logo" src="https://search.ipv6s.net/static/themes/simple/img/searxng.png" alt="Searxng logo">
                 
-                <!-- 中文搜索引擎 -->
-                <div class="engine-group">
-                    <label><input type="checkbox" name="engine" value="!bd"> 百度</label><br>
-                    <label><input type="checkbox" name="engine" value="!360so"> 360搜索</label><br>
-                    <label><input type="checkbox" name="engine" value="!sogou"> 搜狗</label><br>
-                    <label><input type="checkbox" name="engine" value="!qk"> 夸克</label>
-                </div>
-                
-                <!-- 其他引擎 -->
-                <div class="engine-group">
-                    <label><input type="checkbox" name="engine" value="!wa"> WolframAlpha</label><br>
-                    <label><input type="checkbox" name="engine" value="!sp"> Startpage</label><br>
-                    <label><input type="checkbox" name="engine" value="!qw"> Qwant</label>
-                </div>
-                
-                <!-- 地区性引擎 -->
-                <div class="engine-group">
-                    <label><input type="checkbox" name="engine" value="!szn"> Seznam (CZ)</label><br>
-                    <label><input type="checkbox" name="engine" value="!goo"> Goo (JA)</label><br>
-                    <label><input type="checkbox" name="engine" value="!nvr"> Naver (KO)</label><br>
-                    <label><input type="checkbox" name="engine" value="!ts"> Tagesschau (DE)</label>
-                </div>
+                <form id="searchForm">
+                    <input class="gstxt" type="text" name="q" placeholder="输入关键词" required>
+                    
+                    <div class="control-buttons">
+                        <button type="button" class="control-btn" id="selectAll">全选所有</button>
+                        <button type="button" class="control-btn" id="deselectAll">取消所有</button>
+                        <button type="button" class="control-btn" id="recommended">推荐预设</button>
+                    </div>
+                    
+                    <button type="submit" class="gbutton">开始搜索</button>
+                    
+                    <div class="engine-checkbox">
+                        <!-- 国际搜索引擎 -->
+                        <div class="engine-group">
+                            <div class="group-header">
+                                <span class="group-title">国际引擎</span>
+                                <button type="button" class="select-all-group">全选</button>
+                            </div>
+                            <div class="engine-options">
+                                <label><input type="checkbox" name="engine" value="!go"> 谷歌</label>
+                                <label><input type="checkbox" name="engine" value="!bi"> 必应</label>
+                                <label><input type="checkbox" name="engine" value="!yh"> 雅虎</label>
+                                <label><input type="checkbox" name="engine" value="!br"> Brave</label>
+                                <label><input type="checkbox" name="engine" value="!ddg"> DuckDuckGo</label>
+                            </div>
+                        </div>
+                        
+                        <!-- 中文搜索引擎 -->
+                        <div class="engine-group">
+                            <div class="group-header">
+                                <span class="group-title">中文引擎</span>
+                                <button type="button" class="select-all-group">全选</button>
+                            </div>
+                            <div class="engine-options">
+                                <label><input type="checkbox" name="engine" value="!bd"> 百度</label>
+                                <label><input type="checkbox" name="engine" value="!360so"> 360搜索</label>
+                                <label><input type="checkbox" name="engine" value="!sogou"> 搜狗</label>
+                                <label><input type="checkbox" name="engine" value="!qk"> 夸克</label>
+                            </div>
+                        </div>
+                        
+                        <!-- 其他引擎 -->
+                        <div class="engine-group">
+                            <div class="group-header">
+                                <span class="group-title">其他引擎</span>
+                                <button type="button" class="select-all-group">全选</button>
+                            </div>
+                            <div class="engine-options">
+                                <label><input type="checkbox" name="engine" value="!wa"> WolframAlpha</label>
+                                <label><input type="checkbox" name="engine" value="!sp"> Startpage</label>
+                                <label><input type="checkbox" name="engine" value="!qw"> Qwant</label>
+                            </div>
+                        </div>
+                        
+                        <!-- 地区性引擎 -->
+                        <div class="engine-group">
+                            <div class="group-header">
+                                <span class="group-title">地区引擎</span>
+                                <button type="button" class="select-all-group">全选</button>
+                            </div>
+                            <div class="engine-options">
+                                <label><input type="checkbox" name="engine" value="!szn"> Seznam (CZ)</label>
+                                <label><input type="checkbox" name="engine" value="!goo"> Goo (JA)</label>
+                                <label><input type="checkbox" name="engine" value="!nvr"> Naver (KO)</label>
+                                <label><input type="checkbox" name="engine" value="!ts"> Tagesschau (DE)</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-
-    <script>
-document.getElementById('searchForm').onsubmit = function(e) {
-    e.preventDefault();
-    
-    const baseUrl = 'https://search.ipv6s.net/search';
-    const query = encodeURIComponent(this.q.value.trim() + ' ');
-    const engines = Array.from(this.engine)
-                      .filter(cb => cb.checked)
-                      .map(cb => cb.value);
-    
-    if (!query.trim()) return alert('请输入搜索内容');
-    if (!engines.length) return alert('请至少选择一个搜索引擎');
-
-    const params = new URLSearchParams();
-    params.append('q', query);
-    engines.forEach(engine => params.append('engine', engine));
-    params.append('categories', 'general');
-    params.append('language', 'all');
-
-    const finalUrl = `${baseUrl}?${params.toString()}`;
-    window.open(finalUrl);
-};
-    </script>
-
         </div>
     </page-start>
+
+    <script>
+        // 等待DOM加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchForm = document.getElementById('searchForm');
+            const selectAllBtn = document.getElementById('selectAll');
+            const deselectAllBtn = document.getElementById('deselectAll');
+            const recommendedBtn = document.getElementById('recommended');
+            const groupSelectBtns = document.querySelectorAll('.select-all-group');
+            
+            // 表单提交处理
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 获取搜索关键词
+                const query = encodeURIComponent(document.querySelector('input[name="q"]').value.trim());
+                
+                // 获取选中的引擎
+                const selectedEngines = Array.from(
+                    document.querySelectorAll('input[name="engine"]:checked')
+                ).map(checkbox => checkbox.value);
+                
+                // 如果没有选择引擎，提示用户
+                if (selectedEngines.length === 0) {
+                    alert('请至少选择一个搜索引擎');
+                    return;
+                }
+                
+                // 构建查询参数
+                const engineParams = selectedEngines.join('%20');
+                const fullQuery = `${query}%20${engineParams}`;
+                
+                // 构建完整URL
+                const searchUrl = `https://search.ipv6s.net/search?q=${fullQuery}&categories=general&language=all`;
+                
+                // 在新窗口打开搜索结果
+                window.open(searchUrl, '_blank');
+            });
+            
+            // 全选所有引擎
+            selectAllBtn.addEventListener('click', function() {
+                document.querySelectorAll('input[name="engine"]').forEach(checkbox => {
+                    checkbox.checked = true;
+                });
+            });
+            
+            // 取消所有选择
+            deselectAllBtn.addEventListener('click', function() {
+                document.querySelectorAll('input[name="engine"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+            });
+            
+            // 推荐预设：谷歌、雅虎、搜狗、夸克
+            recommendedBtn.addEventListener('click', function() {
+                // 先取消所有选择
+                document.querySelectorAll('input[name="engine"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // 选中推荐的引擎
+                const recommendedEngines = ['!go', '!yh', '!sogou', '!qk'];
+                recommendedEngines.forEach(engine => {
+                    const checkbox = document.querySelector(`input[name="engine"][value="${engine}"]`);
+                    if (checkbox) checkbox.checked = true;
+                });
+            });
+            
+            // 为每个组添加全选功能
+            groupSelectBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 找到当前组内的所有复选框
+                    const group = this.closest('.engine-group');
+                    const checkboxes = group.querySelectorAll('input[name="engine"]');
+                    
+                    // 检查是否所有复选框都已选中
+                    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+                    
+                    // 全选或取消全选
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = !allChecked;
+                    });
+                    
+                    // 更新按钮文本
+                    this.textContent = allChecked ? '全选' : '取消';
+                });
+            });
+        });
+    </script>
     
     
     <script src="/MainCode/script.js"></script>
